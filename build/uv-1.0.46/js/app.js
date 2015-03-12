@@ -3063,6 +3063,10 @@ define('modules/uv-shared-module/baseProvider',["require", "exports", "../../uti
             return this.sequence.seeAlso;
         };
 
+        BaseProvider.prototype.isCanvasIndexOutOfRange = function (canvasIndex) {
+            return canvasIndex > this.getTotalCanvases() - 1;
+        };
+
         BaseProvider.prototype.isFirstCanvas = function (canvasIndex) {
             if (typeof (canvasIndex) === 'undefined')
                 canvasIndex = this.canvasIndex;
@@ -6774,6 +6778,11 @@ define('extensions/uv-seadragon-extension/extension',["require", "exports", "../
                     canvasIndex = parseInt(that.getParam(1 /* canvasIndex */)) || that.provider.getStartCanvasIndex();
                 }
 
+                if (that.provider.isCanvasIndexOutOfRange(canvasIndex)) {
+                    that.showDialogue(that.provider.config.content.canvasIndexOutOfRange);
+                    return;
+                }
+
                 that.viewPage(canvasIndex || that.provider.getStartCanvasIndex());
 
                 $.publish(baseExtension.BaseExtension.RESIZE);
@@ -7122,6 +7131,10 @@ define('modules/uv-shared-module/baseIIIFProvider',["require", "exports", "../..
             }
 
             return '-';
+        };
+
+        BaseProvider.prototype.isCanvasIndexOutOfRange = function (canvasIndex) {
+            return canvasIndex > this.getTotalCanvases() - 1;
         };
 
         BaseProvider.prototype.isFirstCanvas = function (canvasIndex) {

@@ -88,6 +88,19 @@ schema = {
                 }
             }
         },
+        "content": {
+            "id": "content",
+            "type": "object",
+            "options": {
+                "collapsed": true
+            },
+            "properties": {
+                "canvasIndexOutOfRange": {
+                    "id": "canvasIndexOutOfRange",
+                    "type": "string"
+                }
+            }
+        },
         "modules": {
             "id": "modules",
             "type": "object",
