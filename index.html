@@ -13,24 +13,40 @@
     </header>
 
     <main>
-        <div class="uv" data-no-load="true" data-config="/examples/config/default-config.js" style="width:640px; height:480px; background-color: #000"></div>
+        <div class="uv" data-no-load="true" style="width:640px; height:480px; background-color: #000"></div>
     </main>
 
-    <footer>
+    <footer style="display: none">
 
         <h3>Options</h3>
 
         <div>
             <input id="jsonp" type="checkbox"><label for="jsonp">JSONP</label>
+            <p>Forces the viewer to use JSONP to load manifests and info.json. Default behaviour is to use JSONP for IE<10.</p>
+        </div>
+
+        <div>
+            <input id="testids" type="checkbox"><label for="testids">Test Ids</label>
+            <p>Adds unique ids to viewer buttons for testing convenience.</p>
         </div>
 
         <h3>Manifest</h3>
 
         <select id="manifest">
+            <optgroup label="Wellcome Library">
+                <option value="http://wellcomelibrary.org/iiif/b18035978/manifest">The Biocrats</option>
+                <option value="http://wellcomelibrary.org/iiif/b19684915/manifest">Wellcome Apocalypse</option>
+                <option value="http://wellcomelibrary.org/iiif/b22674883/manifest">Harris's ladies</option>
+                <option value="http://wellcomelibrary.org/iiif/b1948799x/manifest">Crick's letter</option>
+            </optgroup>
             <optgroup label="Stanford University">
                 <option value="http://dms-data.stanford.edu/data/manifests/RomanCoins/bb853kn3021/manifest.json">Roman Coins</option>
                 <option value="http://dms-data.stanford.edu/data/manifests/McLaughlin/bc788vp3448/manifest.json">California as Island</option>
                 <option value="http://dms-data.stanford.edu/data/manifests/kn/mw497gz1295/manifest.json">Japanese Songbook</option>
+            </optgroup>
+            <optgroup label="National Library of Wales">
+                <option value="http://dams.llgc.org.uk/iiif/2.0/4389767/manifest.json">Cardiganshire Constabulary</option>
+                <option value="/examples/manifest/translations.js">Translations</option>
             </optgroup>
             <optgroup label="British Library">
                 <option value="http://v8l-webtest1.bl.uk:88/IIIFMetadataService/ark:/81055/vdc_000000000144/manifest.json">Proceedings at Peebles</option>
@@ -77,16 +93,28 @@
             </optgroup>
         </select>
 
+        <h3>Locale</h3>
+
+        <p>Test setting the data-locale attribute on the embedding div.</p>
+
+        <select id="locale">
+
+        </select>
+
+        <p>Set locale precedence and label e.g. en-GB:English,cy-GB:Welsh</p>
+
+        <input id="locales" type="text" value="" />
+
+        <a id="setLocalesBtn" class="button">Set</a>
+
         <h3>Config</h3>
 
-        <select id="config">
-            <option value="/examples/config/default-config.js">Default</option>
-            <option value="/examples/config/cy-GB-config.js">Welsh</option>
-        </select>
+        <p>Changes to config made with this tool are at the session level and not persisted.</p>
 
         <ul id="edit-config" class="button-group">
             <li><a id="editBtn" href="#" class="button">Edit</a></li>
             <li><a id="saveBtn" href="#" class="button hide">Save</a></li>
+            <li><a id="resetBtn" href="#" class="button hide">Reset</a></li>
         </ul>
 
         <div id="editPnl" class="hide">
@@ -99,6 +127,7 @@
     <script type="text/javascript" src="lib/json-editor/dist/jsoneditor.js"></script>
     <script type="text/javascript" src="plugins.js"></script>
     <script type="text/javascript" src="utils.js"></script>
+    <script type="text/javascript" src="testids.js"></script>
     <script type="text/javascript" src="examples.js"></script>
 
 </body>

@@ -2,9 +2,33 @@
 // todo: look at using typson to generate this from a ts definition file: https://github.com/lbovet/typson
 schema = {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://github.com/britishlibrary/UniversalViewer",
+    "id": "https://github.com/UniversalViewer/universalviewer",
     "type": "object",
     "properties": {
+        "extends": {
+            "id": "extends",
+            "type": "string",
+            "options": {
+                "hidden": true
+            }
+        },
+        "localisation": {
+            "id": "localisation",
+            "type": "object",
+            "options": {
+                "hidden": true
+            },
+            "properties": {
+                "label": {
+                    "id": "label",
+                    "type": "string"
+                },
+                "locales": {
+                    "id": "locales",
+                    "type": "array"
+                }
+            }
+        },
         "options": {
             "id": "options",
             "type": "object",
@@ -30,6 +54,10 @@ schema = {
                 },
                 "pagingEnabled": {
                     "id": "pagingEnabled",
+                    "type": "boolean"
+                },
+                "preserveViewport": {
+                    "id": "preserveViewport",
                     "type": "boolean"
                 },
                 "sectionMappings": {
@@ -67,6 +95,25 @@ schema = {
                 "collapsed": true
             },
             "properties": {
+                "dialogue": {
+                    "id": "dialogue",
+                    "type": "object",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "content": {
+                            "id": "content",
+                            "type": "object",
+                            "properties": {
+                                "close": {
+                                    "id": "close",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
                 "genericDialogue": {
                     "id": "genericDialogue",
                     "type": "object",
@@ -147,6 +194,10 @@ schema = {
                                 "locale": {
                                     "id": "locale",
                                     "type": "string"
+                                },
+                                "preserveViewport": {
+                                    "id": "preserveViewport",
+                                    "type": "string"
                                 }
                             }
                         }
@@ -180,6 +231,18 @@ schema = {
                                 "instructions": {
                                     "id": "instructions",
                                     "type": "string"
+                                },
+                                "width": {
+                                    "id": "width",
+                                    "type": "string"
+                                },
+                                "height": {
+                                    "id": "height",
+                                    "type": "string"
+                                },
+                                "customSize": {
+                                    "id": "customSize",
+                                    "type": "string"
                                 }
                             }
                         }
@@ -192,6 +255,20 @@ schema = {
                         "collapsed": true
                     },
                     "properties": {
+                        "options": {
+                            "id": "options",
+                            "type": "object",
+                            "properties": {
+                                "localeToggleEnabled": {
+                                    "id": "localeToggleEnabled",
+                                    "type": "boolean"
+                                },
+                                "pagingToggleEnabled": {
+                                    "id": "pagingToggleEnabled",
+                                    "type": "boolean"
+                                }
+                            }
+                        },
                         "content": {
                             "id": "content",
                             "type": "object",
@@ -243,6 +320,14 @@ schema = {
                                 },
                                 "settings": {
                                     "id": "settings",
+                                    "type": "string"
+                                },
+                                "oneUp": {
+                                    "id": "oneUp",
+                                    "type": "string"
+                                },
+                                "twoUp": {
+                                    "id": "twoUp",
                                     "type": "string"
                                 }
                             },
@@ -316,8 +401,15 @@ schema = {
                                 "elideCount": {
                                     "id": "ellideCount",
                                     "type": "integer"
+                                },
+                                "treeEnabled": {
+                                    "id": "treeEnabled",
+                                    "type": "boolean"
+                                },
+                                "thumbsEnabled": {
+                                    "id": "thumbsEnabled",
+                                    "type": "boolean"
                                 }
-
                             }
                         },
                         "content": {
@@ -332,8 +424,24 @@ schema = {
                                     "id": "thumbnails",
                                     "type": "string"
                                 },
-                                "contents": {
-                                    "id": "contents",
+                                "title": {
+                                    "id": "title",
+                                    "type": "string"
+                                },
+                                "expand": {
+                                    "id": "expand",
+                                    "type": "string"
+                                },
+                                "expandFull": {
+                                    "id": "expandFull",
+                                    "type": "string"
+                                },
+                                "collapse": {
+                                    "id": "collapse",
+                                    "type": "string"
+                                },
+                                "collapseFull": {
+                                    "id": "collapseFull",
                                     "type": "string"
                                 }
                             }
@@ -455,8 +563,24 @@ schema = {
                                     "id": "noData",
                                     "type": "string"
                                 },
-                                "moreInformation": {
-                                    "id": "moreInformation",
+                                "title": {
+                                    "id": "title",
+                                    "type": "string"
+                                },
+                                "expand": {
+                                    "id": "expand",
+                                    "type": "string"
+                                },
+                                "expandFull": {
+                                    "id": "expandFull",
+                                    "type": "string"
+                                },
+                                "collapse": {
+                                    "id": "collapse",
+                                    "type": "string"
+                                },
+                                "collapseFull": {
+                                    "id": "collapseFull",
                                     "type": "string"
                                 }
                             }
@@ -476,6 +600,10 @@ schema = {
                             "properties": {
                                 "embedEnabled": {
                                     "id": "embedEnabled",
+                                    "type": "boolean"
+                                },
+                                "fullscreenEnabled": {
+                                    "id": "fullscreenEnabled",
                                     "type": "boolean"
                                 },
                                 "minimiseButtons": {
@@ -513,10 +641,10 @@ $(function(){
 
     var testBuild = getQuerystringParameter("build");
     var isLocalhost = document.location.href.indexOf('localhost') != -1;
-    var editor;
+    var config, editor, locales;
 
     if (testBuild){
-        $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.27/js/embed.js"><\/script>');
+        $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.45/js/embed.js"><\/script>');
     } else {
         if (isLocalhost){
             $("body").append('<script type="text/javascript" id="embedUV" src="/src/js/embed.js"><\/script>');
@@ -526,11 +654,9 @@ $(function(){
             // remove '/examples' from paths
             $('.uv').updateAttr('data-config', '/examples/', '/');
 
-            if ($('.uv').attr('data-uri')){
-                $('.uv').updateAttr('data-uri', '/examples/', '/');
-            }
+            $('.uv').updateAttr('data-uri', '/examples/', '/');
 
-            $('#config option').each(function() {
+            $('#locale option').each(function() {
                 $(this).updateAttr('value', '/examples/', '/');
             });
 
@@ -538,28 +664,29 @@ $(function(){
                 $(this).updateAttr('value', '/examples/', '/');
             });
 
-            $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.27/js/embed.js"><\/script>');
+            $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.45/js/embed.js"><\/script>');
         }
     }
 
-    setTimeout(function(){
-        setJSONPEnabled();
+    setJSONPEnabled();
 
-        if ($('#manifest option').length || $('#manifest optgroup').length){
-            setSelectedManifest();
-        }
+    if ($('#manifest option').length || $('#manifest optgroup').length){
+        setSelectedManifest();
+    }
 
-        if ($('#config option').length || $('#config optgroup').length){
-            setSelectedConfig();
-        }
-
-        createEditor();
-
-        loadViewer();
-    }, 2000);
+    createEditor();
+    setSelectedLocale();
+    loadViewer();
 
     function loadViewer() {
-        initPlayers($('.uv'));
+
+        // todo: update embed.js to work with script loaders.
+        if (window.initPlayers && window.easyXDM){
+            initPlayers($('.uv'));
+        } else {
+            setTimeout(loadViewer, 100);
+        }
+
     }
 
     function isIE8(){
@@ -583,7 +710,7 @@ $(function(){
             required_by_default: true
         });
 
-        editor.on('change',function() {
+        editor.on('change', function() {
             // Get an array of errors from the validator
             var errors = editor.validate();
 
@@ -598,7 +725,11 @@ $(function(){
         buildQuerystring();
     });
 
-    $('#config').on('change', function(){
+    $('#locale').on('change', function(){
+        $('#locales').val($('#locale option:selected').val());
+    });
+
+    $('#setLocalesBtn').on('click', function(){
         buildQuerystring();
     });
 
@@ -606,9 +737,17 @@ $(function(){
         buildQuerystring();
     });
 
+    $('#testids').on('change', function(){
+        buildQuerystring();
+    });
+
     function buildQuerystring() {
+        $('footer').hide();
+
         var jsonp = $('#jsonp').is(':checked');
-        var config = $('#config option:selected').val();
+        var testids = $('#testids').is(':checked');
+        var locale = $('#locales').val();
+
         var manifest = $('#manifest option:selected').val();
 
         // clear hash params
@@ -616,11 +755,27 @@ $(function(){
 
         var qs = document.location.search.replace('?', '');
         qs = updateURIKeyValuePair(qs, "jsonp", jsonp);
-        qs = updateURIKeyValuePair(qs, "config", config);
+        qs = updateURIKeyValuePair(qs, "testids", testids);
+        qs = updateURIKeyValuePair(qs, "locale", locale);
         qs = updateURIKeyValuePair(qs, "manifest", manifest);
 
         // reload
         window.location.search = qs;
+    }
+
+    function getDefaultLocale(l) {
+        var parsed = [];
+        var l = l.split(',');
+
+        for (var i = 0; i < l.length; i++) {
+            var v = l[i].split(':');
+            parsed.push({
+                name: v[0].trim(),
+                label: (v[1]) ? v[1].trim() : ""
+            });
+        }
+
+        return parsed[0].name;
     }
 
     function setJSONPEnabled() {
@@ -657,40 +812,48 @@ $(function(){
         $('.uv').attr('data-uri', manifest);
     }
 
-    function setSelectedConfig(){
+    function setSelectedLocale() {
+        locales = getQuerystringParameter("locale") || "en-GB";
 
-        var config = getQuerystringParameter("config");
+        $("#locale").val(getDefaultLocale(locales));
 
-        if (config) {
-            $("#config").val(config);
+        $("#locales").val(locales);
+
+        $('.uv').attr('data-locale', locales);
+    }
+
+    function setTestIds(){
+        var testids = $('#testids').is(':checked');
+
+        var qs = getQuerystringParameter("testids");
+
+        if (qs === 'true') {
+            createTestIds();
+            $('#testids').attr('checked', 'true');
         } else {
-            config = $('#config option')[0].value;
+            $('#testids').removeAttr('checked');
         }
-
-        $('.uv').attr('data-config', config);
     }
 
     $('#editBtn').on('click', function(e) {
         e.preventDefault();
 
+        edit();
+    });
+
+    function edit() {
         $('#editPnl').toggleClass('show', 'hide');
         $('#saveBtn').toggleClass('show', 'hide');
-        $(this).toggleText('Edit', 'Close');
+        $('#resetBtn').toggleClass('show', 'hide')
+        $('#editBtn').toggleText('Edit', 'Close');
 
         if ($('#editPnl').hasClass('show')){
 
-            // first get the default extension config
-            // todo: figure out how to make this work for more than just seadragon extension
-            $.getJSON('/build/uv-1.0.27/js/uv-seadragon-extension-config.js', function(baseConfig){
-                var configUrl = $('#config option:selected').val();
-
-                $.getJSON(configUrl, function(config){
-                    $.extend(true, baseConfig, config);
-                    editor.setValue(baseConfig);
-                });
+            $.getJSON('/build/uv-1.0.45/js/' + config.name + '.' + getDefaultLocale(locales) + '.config.js', function(config){
+                editor.setValue(config);
             });
         }
-    });
+    }
 
     $('#saveBtn').on('click', function(e) {
         e.preventDefault();
@@ -710,17 +873,47 @@ $(function(){
         loadViewer();
     });
 
-    // test overrideFullScreen option
-    $(document).bind("onToggleFullScreen", function (event, isFullScreen) {
+    $('#resetBtn').on('click', function(e){
+        e.preventDefault();
+
+        $('.uv').removeAttr('data-config');
+        sessionStorage.removeItem("uv-config");
+
+        loadViewer();
+
+        edit();
+    });
+
+    $(document).bind("uv.onToggleFullScreen", function (event, isFullScreen) {
         console.log('full screen: ' + isFullScreen);
     });
 
-    // test currentViewUri event
-    $(document).bind("onCurrentViewUri", function (event, obj) {
-        console.log(obj);
+    $(document).bind("uv.onSequenceIndexChanged", function (event, isFullScreen) {
+
     });
 
-    $(document).bind("onLoad", function (event, obj) {
+    $(document).bind("uv.onCurrentViewUri", function (event, obj) {
 
+    });
+
+    $(document).bind("uv.onLoad", function (event, obj) {
+        $('#locale').empty();
+
+        config = obj.config;
+
+        var locales = config.localisation.locales;
+
+        for (var i = 0; i < locales.length; i++){
+            var l = locales[i];
+            $('#locale').append('<option value="' + l.name + '">' + l.label + '</option>');
+        }
+
+        setSelectedLocale();
+
+        $('footer').show();
+    });
+
+    $(document).bind("uv.onCreated", function (event, obj) {
+        setTestIds();
     });
 });
