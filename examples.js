@@ -261,6 +261,63 @@ schema = {
                         }
                     }
                 },
+                "downloadDialogue": {
+                    "id": "downloadDialogue",
+                    "type": "object",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "options": {
+                            "id": "options",
+                            "type": "object",
+                            "properties": {
+                                "confinedImageSize": {
+                                    "id": "confinedImageSize",
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "content": {
+                            "id": "content",
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "id": "title",
+                                    "type": "string"
+                                },
+                                "currentViewAsJpg": {
+                                    "id": "currentViewAsJpg",
+                                    "type": "string"
+                                },
+                                "wholeImageHighResAsJpg": {
+                                    "id": "wholeImageHighResAsJpg",
+                                    "type": "string"
+                                },
+                                "wholeImageLowResAsJpg": {
+                                    "id": "wholeImageLowResAsJpg",
+                                    "type": "string"
+                                },
+                                "entireDocumentAsPdf": {
+                                    "id": "entireDocumentAsPdf",
+                                    "type": "string"
+                                },
+                                "entireFileAsOriginal": {
+                                    "id": "entireFileAsOriginal",
+                                    "type": "string"
+                                },
+                                "preview": {
+                                    "id": "preview",
+                                    "type": "string"
+                                },
+                                "download": {
+                                    "id": "download",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
                 "pagingHeaderPanel": {
                     "id": "pagingHeaderPanel",
                     "type": "object",
@@ -644,6 +701,10 @@ schema = {
                                 "embed": {
                                     "id": "embed",
                                     "type": "string"
+                                },
+                                "download": {
+                                    "id": "download",
+                                    "type": "string"
                                 }
                             }
                         }
@@ -693,6 +754,7 @@ $(function(){
 
     createEditor();
     setSelectedLocale();
+    setDefaultToFullScreen();
     loadViewer();
 
     function loadViewer() {
@@ -758,11 +820,16 @@ $(function(){
         buildQuerystring();
     });
 
+    $('#defaultToFullScreen').on('change', function(){
+        buildQuerystring();
+    });
+
     function buildQuerystring() {
         $('footer').hide();
 
         var jsonp = $('#jsonp').is(':checked');
         var testids = $('#testids').is(':checked');
+        var defaultToFullScreen = $('#defaultToFullScreen').is(':checked');
         var locale = $('#locales').val();
 
         var manifest = $('#manifest option:selected').val();
@@ -773,6 +840,7 @@ $(function(){
         var qs = document.location.search.replace('?', '');
         qs = updateURIKeyValuePair(qs, "jsonp", jsonp);
         qs = updateURIKeyValuePair(qs, "testids", testids);
+        qs = updateURIKeyValuePair(qs, "defaultToFullScreen", defaultToFullScreen);
         qs = updateURIKeyValuePair(qs, "locale", locale);
         qs = updateURIKeyValuePair(qs, "manifest", manifest);
 
@@ -849,6 +917,20 @@ $(function(){
             $('#testids').attr('checked', 'true');
         } else {
             $('#testids').removeAttr('checked');
+        }
+    }
+
+    function setDefaultToFullScreen(){
+        var defaultToFullScreen = $('#defaultToFullScreen').is(':checked');
+
+        var qs = getQuerystringParameter("defaultToFullScreen");
+
+        if (qs === 'true') {
+            $('.uv').attr('data-fullscreen', true);
+            $('#defaultToFullScreen').attr('checked', 'true');
+        } else {
+            $('.uv').removeAttr('data-fullscreen');
+            $('#defaultToFullScreen').removeAttr('checked');
         }
     }
 
@@ -932,5 +1014,6 @@ $(function(){
 
     $(document).bind("uv.onCreated", function (event, obj) {
         setTestIds();
+        showLightbox();
     });
 });
