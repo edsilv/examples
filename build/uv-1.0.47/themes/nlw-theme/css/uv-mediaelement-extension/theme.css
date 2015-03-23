@@ -2079,14 +2079,20 @@ input[type=range]:focus::-ms-fill-upper {
 }
 #app .headerPanel .options .centerOptions {
   margin: 5px 0 0 0;
-  width: 420px;
+  width: 432px;
   position: absolute;
+}
+#app .headerPanel .options .centerOptions .prevOptions {
+  margin: 0 10px 0 0;
 }
 #app .headerPanel .options .centerOptions .mode label {
   width: 42px;
 }
 #app .headerPanel .options .centerOptions .search {
-  width: 125px;
+  width: 140px;
+}
+#app .headerPanel .options .centerOptions .nextOptions {
+  margin: 0 0 0 10px;
 }
 #app .headerPanel .options .rightOptions {
   float: right;
@@ -2494,10 +2500,8 @@ input[type=range]:focus::-ms-fill-upper {
   list-style-position: inside;
   list-style-type: none;
   margin: 0;
-  padding: 0;
 }
 #app .overlay .middle .content ol.options li {
-  background: #eeeeee;
   margin: 2px 0 0 0;
   padding: 4px;
 }
@@ -2506,10 +2510,10 @@ input[type=range]:focus::-ms-fill-upper {
   padding: 0;
   width: auto;
   height: auto;
-  display: inline-block;
+  display: inline;
 }
 #app .overlay .middle .content ol.options li label {
-  display: inline-block;
+  display: inline;
   margin: 0 0 0 5px;
   padding: 0;
   float: none;
