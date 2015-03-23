@@ -3590,7 +3590,7 @@ define('modules/uv-shared-module/baseProvider',["require", "exports", "../../uti
 });
 
 define('_Version',["require", "exports"], function(require, exports) {
-    exports.Version = '1.0.46';
+    exports.Version = '1.0.47';
 });
 
 var __extends = this.__extends || function (d, b) {
@@ -6203,13 +6203,7 @@ define('modules/uv-shared-module/footerPanel',["require", "exports", "../../util
                 this.$embedButton.hide();
             }
 
-<<<<<<< HEAD
-            if (!utils.Utils.getBool(this.options.downloadEnabled, true)) {
-                this.$downloadButton.hide();
-            }
-=======
             this.updateDownloadButton();
->>>>>>> master
 
             if (!utils.Utils.getBool(this.options.fullscreenEnabled, true)) {
                 this.$fullScreenBtn.hide();
@@ -6941,12 +6935,7 @@ define('extensions/uv-seadragon-extension/extension',["require", "exports", "../
             });
 
             $.subscribe(footer.FooterPanel.DOWNLOAD, function (e) {
-<<<<<<< HEAD
-                var c = _this.provider.getCanvasByIndex(_this.provider.canvasIndex);
-                c = c['@id'];
-=======
                 $.publish(download.DownloadDialogue.SHOW_DOWNLOAD_DIALOGUE);
->>>>>>> master
             });
 
             var deps = overrideDependencies || dependencies;
