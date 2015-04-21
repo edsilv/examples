@@ -60,31 +60,9 @@ schema = {
                     "id": "preserveViewport",
                     "type": "boolean"
                 },
-                "sectionMappings": {
-                    "id": "sectionMappings",
-                    "type": "object",
-                    "properties": {
-                        "CoverFrontOutside": {
-                            "id": "CoverFrontOutside",
-                            "type": "string"
-                        },
-                        "CoverBackOutside": {
-                            "id": "CoverBackOutside",
-                            "type": "string"
-                        },
-                        "TitlePage": {
-                            "id": "TitlePage",
-                            "type": "string"
-                        },
-                        "TableOfContents": {
-                            "id": "TableOfContents",
-                            "type": "string"
-                        },
-                        "PartOfWork": {
-                            "id": "PartOfWork",
-                            "type": "string"
-                        }
-                    }
+                "searchWithinEnabled": {
+                    "id": "searchWithinEnabled",
+                    "type": "boolean"
                 }
             }
         },
@@ -709,6 +687,91 @@ schema = {
                             }
                         }
                     }
+                },
+                "searchFooterPanel": {
+                    "id": "searchFooterPanel",
+                    "type": "object",
+                    "options": {
+                        "collapsed": true
+                    },
+                    "properties": {
+                        "options": {
+                            "id": "options",
+                            "type": "object",
+                            "properties": {
+                                "elideDetailsTermsCount": {
+                                    "id": "elideDetailsTermsCount",
+                                    "type": "integer"
+                                },
+                                "elideResultsTermsCount": {
+                                    "id": "elideResultsTermsCount",
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "content": {
+                            "id": "content",
+                            "type": "object",
+                            "properties": {
+                                "instanceFound": {
+                                    "id": "instanceFound",
+                                    "type": "string"
+                                },
+                                "instancesFound": {
+                                    "id": "instancesFound",
+                                    "type": "string"
+                                },
+                                "resultFoundFor": {
+                                    "id": "resultFoundFor",
+                                    "type": "string"
+                                },
+                                "resultsFoundFor": {
+                                    "id": "resultsFoundFor",
+                                    "type": "string"
+                                },
+                                "displaying": {
+                                    "id": "displaying",
+                                    "type": "string"
+                                },
+                                "page": {
+                                    "id": "page",
+                                    "type": "string"
+                                },
+                                "image": {
+                                    "id": "image",
+                                    "type": "string"
+                                },
+                                "searchWithin": {
+                                    "id": "searchWithin",
+                                    "type": "string"
+                                },
+                                "enterKeyword": {
+                                    "id": "enterKeyword",
+                                    "type": "string"
+                                },
+                                "pageCaps": {
+                                    "id": "pageCaps",
+                                    "type": "string"
+                                },
+                                "imageCaps": {
+                                    "id": "imageCaps",
+                                    "type": "string"
+                                },
+                                "clearSearch": {
+                                    "id": "clearSearch",
+                                    "type": "string"
+                                },
+                                "previousResult": {
+                                    "id": "previousResult",
+                                    "type": "string"
+                                },
+                                "nextResult": {
+                                    "id": "nextResult",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -721,11 +784,18 @@ $(function(){
     var isLocalhost = document.location.href.indexOf('localhost') != -1;
     var config, editor, locales;
 
+    // if the embed script has been included in the page for testing, don't append it.
+    var scriptIncluded = $('#embedUV').length;
+
     if (testBuild){
+<<<<<<< HEAD
         $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.47/js/embed.js"><\/script>');
+=======
+        $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.48/js/embed.js"><\/script>');
+>>>>>>> master
     } else {
         if (isLocalhost){
-            $("body").append('<script type="text/javascript" id="embedUV" src="/src/js/embed.js"><\/script>');
+            if (!scriptIncluded) $("body").append('<script type="text/javascript" id="embedUV" src="/src/js/embed.js"><\/script>');
         } else {
             // built version
 
@@ -742,7 +812,11 @@ $(function(){
                 $(this).updateAttr('value', '/examples/', '/');
             });
 
+<<<<<<< HEAD
             $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.47/js/embed.js"><\/script>');
+=======
+            $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.48/js/embed.js"><\/script>');
+>>>>>>> master
         }
     }
 
@@ -830,7 +904,7 @@ $(function(){
         var jsonp = $('#jsonp').is(':checked');
         var testids = $('#testids').is(':checked');
         var defaultToFullScreen = $('#defaultToFullScreen').is(':checked');
-        var locale = $('#locales').val();
+        var locale = $('#locales').val() || "en-GB";
 
         var manifest = $('#manifest option:selected').val();
 
@@ -855,8 +929,8 @@ $(function(){
         for (var i = 0; i < l.length; i++) {
             var v = l[i].split(':');
             parsed.push({
-                name: v[0].trim(),
-                label: (v[1]) ? v[1].trim() : ""
+                name: v[0],
+                label: (v[1]) ? v[1] : ""
             });
         }
 
@@ -948,7 +1022,11 @@ $(function(){
 
         if ($('#editPnl').hasClass('show')){
 
+<<<<<<< HEAD
             $.getJSON('/build/uv-1.0.47/js/' + config.name + '.' + getDefaultLocale(locales) + '.config.js', function(config){
+=======
+            $.getJSON('/build/uv-1.0.48/js/' + config.name + '.' + getDefaultLocale(locales) + '.config.js', function(config){
+>>>>>>> master
                 editor.setValue(config);
             });
         }
