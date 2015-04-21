@@ -789,7 +789,7 @@ $(function(){
 
     if (testBuild){
 <<<<<<< HEAD
-        $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.47/js/embed.js"><\/script>');
+        $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.48/js/embed.js"><\/script>');
 =======
         $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.48/js/embed.js"><\/script>');
 >>>>>>> master
@@ -813,7 +813,7 @@ $(function(){
             });
 
 <<<<<<< HEAD
-            $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.47/js/embed.js"><\/script>');
+            $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.48/js/embed.js"><\/script>');
 =======
             $("body").append('<script type="text/javascript" id="embedUV" src="/build/uv-1.0.48/js/embed.js"><\/script>');
 >>>>>>> master
@@ -1023,7 +1023,7 @@ $(function(){
         if ($('#editPnl').hasClass('show')){
 
 <<<<<<< HEAD
-            $.getJSON('/build/uv-1.0.47/js/' + config.name + '.' + getDefaultLocale(locales) + '.config.js', function(config){
+            $.getJSON('/build/uv-1.0.48/js/' + config.name + '.' + getDefaultLocale(locales) + '.config.js', function(config){
 =======
             $.getJSON('/build/uv-1.0.48/js/' + config.name + '.' + getDefaultLocale(locales) + '.config.js', function(config){
 >>>>>>> master
