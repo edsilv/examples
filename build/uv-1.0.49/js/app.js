@@ -8046,9 +8046,6 @@ define('extensions/uv-seadragon-extension/Page',["require", "exports"], function
                 url: this.tileSourceUri,
                 success: function (data) {
                     _this.tileSource = data;
-                },
-                error: function (error, message) {
-                    console.error(message);
                 }
             });
         };
@@ -8188,7 +8185,7 @@ define('extensions/uv-seadragon-extension/provider',["require", "exports", "../.
             } else if (canvas.images && canvas.images[0].resource.service) {
                 iiifUri = canvas.images[0].resource.service['@id'];
             } else {
-                return "";
+                return null;
             }
 
             if (!iiifUri) {
@@ -8246,7 +8243,7 @@ define('extensions/uv-seadragon-extension/provider',["require", "exports", "../.
                 }
             }
 
-            var imageUnavailableUri = (window.DEBUG) ? '/src/extensions/uv-seadragon-extension/js/imageunavailable.json' : 'js/imageunavailable.json';
+            var imageUnavailableUri = (window.DEBUG) ? '/src/extensions/uv-seadragon-extension/js/imageunavailable.js' : 'js/imageunavailable.js';
 
             _.each(this.pages, function (page) {
                 if (!page.tileSourceUri) {
