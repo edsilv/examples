@@ -1,6 +1,6 @@
 define(function() {
     return {
-        'pdf': './js/pdf_combined',
-        'pdfobject': './js/pdfobject'
+        'pdf': 'pdf_combined',
+        'pdfobject': 'pdfobject'
     };
 });
