@@ -1152,12 +1152,6 @@ $(function(){
             return $.ajax({
                     dataType: "json",
                     url: uri,
-                    //xhrFields: {
-                    //    withCredentials: true
-                    //},
-                    //success: function(data) {
-                    //    this.tileSource = data;
-                    //},
                     error: function(error, message) {
                         console.error(message);
                     }
