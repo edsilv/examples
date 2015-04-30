@@ -1,26 +1,26 @@
 {
     "@context": "http://iiif.io/api/presentation/2/context.json",
-    "@id": "http://example.org/iiif/collection/top",
+    "@id": "http://universalviewer.azurewebsites.net",
     "@type": "sc:Collection",
     "label": "Manifests",
     "collections": [
         {
-            "@id": "http://universalviewer.org/iiif/collection/wellcome_library.json",
+            "@id": "/examples/manifests/wellcome_library.json",
             "@type": "sc:Collection",
             "label": "Wellcome Library"
         },
         {
-            "@id": "http://universalviewer.org/iiif/collection/stanford_university.json",
+            "@id": "/examples/manifests/stanford_university.json",
             "@type": "sc:Collection",
             "label": "Stanford University"
         },
         {
-            "@id": "http://universalviewer.org/iiif/collection/national_library_of_wales.json",
+            "@id": "/examples/manifests/national_library_of_wales.json",
             "@type": "sc:Collection",
             "label": "National Library of Wales"
         },
         {
-            "@id": "http://universalviewer.org/iiif/collection/british_library.json",
+            "@id": "/examples/manifests/british_library.json",
             "@type": "sc:Collection",
             "label": "British Library"
         }

@@ -1131,34 +1131,58 @@ $(function(){
     // if the embed script has been included in the page for testing, don't append it.
     var scriptIncluded = $('#embedUV').length;
 
-    var manifestsUri;
+    var collectionUri;
 
     if (isLocalhost){
-        manifestsUri = "/examples/manifests.json";
+        collectionUri = "/examples/collection.json";
     } else {
-        manifestsUri = "/manifests.json";
+        collectionUri = "/collection.json";
     }
 
     // load manifests
-    $.getJSON(manifestsUri, function(manifests){
+    $.getJSON(collectionUri, function(collection){
 
-        var $manifestSelect = $('#manifestSelect');
+        var collectionUris = [];
 
-        for (var i = 0; i < manifests.length; i++) {
-            var group = manifests[i];
+        _.each(collection.collections, function(c) {
+            collectionUris.push(c["@id"]);
+        });
 
-            $manifestSelect.append('<optgroup label="' + group.title + '">');
+        var promises = _.map(collectionUris, function(uri) {
+            return $.ajax({
+                    dataType: "json",
+                    url: uri,
+                    //xhrFields: {
+                    //    withCredentials: true
+                    //},
+                    //success: function(data) {
+                    //    this.tileSource = data;
+                    //},
+                    error: function(error, message) {
+                        console.error(message);
+                    }
+                });
+        });
 
-            for (var j = 0; j < group.manifests.length; j++){
-                var manifest = group.manifests[j];
+        $.when.apply($, promises).then(function() {
+            var $manifestSelect = $('#manifestSelect');
 
-                $manifestSelect.append('<option value="' + manifest.uri + '">' + manifest.title + '</option>');
+            for (var i = 0; i < arguments.length; i++) {
+                var collection = arguments[i][0];
+
+                $manifestSelect.append('<optgroup label="' + collection.label + '">');
+
+                for (var j = 0; j < collection.manifests.length; j++){
+                    var manifest = collection.manifests[j];
+
+                    $manifestSelect.append('<option value="' + manifest['@id'] + '">' + manifest.label + '</option>');
+                }
+
+                $manifestSelect.append('</optgroup>');
             }
 
-            $manifestSelect.append('</optgroup>');
-        }
-
-        init();
+            init();
+        });
 
     });
 

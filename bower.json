@@ -18,7 +18,9 @@
     "foundation": "~5.5.0",
     "fontawesome": "~4.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "components-underscore": "~1.7.0"
+  },
   "resolutions": {
     "jquery": "~1.11.2"
   }
