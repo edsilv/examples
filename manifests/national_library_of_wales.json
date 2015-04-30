@@ -1,0 +1,13 @@
+{
+    "@context": "http://iiif.io/api/presentation/2/context.json",
+    "@id": "http://universalviewer.org/iiif/collection/national_library_of_wales",
+    "@type": "sc:Collection",
+    "label": "National Library of Wales",
+    "manifests": [
+        {
+            "@id": "http://dams.llgc.org.uk/iiif/2.0/4389767/manifest.json",
+            "@type": "sc:Manifest",
+            "label" : "Cardiganshire Constabulary"
+        }
+    ]
+}

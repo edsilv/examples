@@ -1,0 +1,23 @@
+{
+    "@context": "http://iiif.io/api/presentation/2/context.json",
+    "@id": "http://universalviewer.org/iiif/collection/stanford_university",
+    "@type": "sc:Collection",
+    "label": "Stanford University",
+    "manifests": [
+        {
+            "@id": "http://dms-data.stanford.edu/data/manifests/RomanCoins/bb853kn3021/manifest.json",
+            "@type": "sc:Manifest",
+            "label" : "Roman Coins"
+        },
+        {
+            "@id": "http://dms-data.stanford.edu/data/manifests/McLaughlin/bc788vp3448/manifest.json",
+            "@type": "sc:Manifest",
+            "label" : "California as Island"
+        },
+        {
+            "@id": "http://dms-data.stanford.edu/data/manifests/kn/mw497gz1295/manifest.json",
+            "@type": "sc:Manifest",
+            "label" : "Japanese Songbook"
+        }
+    ]
+}

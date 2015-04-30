@@ -1,0 +1,48 @@
+{
+    "@context": "http://iiif.io/api/presentation/2/context.json",
+    "@id": "http://universalviewer.org/iiif/collection/british_library",
+    "@type": "sc:Collection",
+    "label": "British Library",
+    "manifests": [
+        {
+            "@id": "http://v8l-webtest1.bl.uk:88/IIIFMetadataService/ark:/81055/vdc_000000000144/manifest.json",
+            "@type": "sc:Manifest",
+            "label" : "Proceedings at Peebles"
+        },
+        {
+            "@id": "http://v8l-webtest1.bl.uk:88/IIIFMetadataService/ark:/81055/vdc_100015688900.0x000002/manifest.json",
+            "@type": "sc:Manifest",
+            "label" : "Pictures of Light. Three Pieces for Pianoforte."
+        },
+        {
+            "@id": "http://v8l-webtest1.bl.uk:88/IIIFMetadataService/or_16753/manifest.json",
+            "@type": "sc:Manifest",
+            "label" : "Sutras (Top to bottom)"
+        },
+        {
+            "@id": "http://v8l-webtest1.bl.uk:88/IIIFMetadataService/ark:/81055/vdc_000000028404Missing/manifest.json",
+            "@type": "sc:Manifest",
+            "label" : "Missing Images"
+        },
+        {
+            "@id": "http://v8l-webtest1.bl.uk:88/IIIFMetadataService/ark:/81055/vdc_000000028404longtitle/manifest.json",
+            "@type": "sc:Manifest",
+            "label" : "Long Title"
+        },
+        {
+            "@id": "http://v8l-webtest1.bl.uk:88/IIIFMetadataService/add_ms_9405/manifest.json",
+            "@type": "sc:Manifest",
+            "label" : "Right to Left"
+        },
+        {
+            "@id": "http://v8l-webtest1.bl.uk:88/IIIFMetadataService/ark:/81055/vdc_000000028404hierarchy/manifest.json",
+            "@type": "sc:Manifest",
+            "label" : "Deep Hierarchy"
+        },
+        {
+            "@id": "http://v8l-webtest1.bl.uk:88/IIIFMetadataService/ark:/81055/vdc_000000028404deephierarchy/manifest.json",
+            "@type": "sc:Manifest",
+            "label" : "Deep Hierarchy 2"
+        }
+    ]
+}

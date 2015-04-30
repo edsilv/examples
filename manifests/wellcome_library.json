@@ -1,0 +1,33 @@
+{
+    "@context": "http://iiif.io/api/presentation/2/context.json",
+    "@id": "http://universalviewer.org/iiif/collection/wellcome_library",
+    "@type": "sc:Collection",
+    "label": "Wellcome Library",
+    "manifests": [
+        {
+            "@id": "http://wellcomelibrary.org/iiif/b18035723/manifest",
+            "@type": "sc:Manifest",
+            "label" : "Wunder der Vererbung"
+        },
+        {
+            "@id": "http://wellcomelibrary.org/iiif/b18035978/manifest",
+            "@type": "sc:Manifest",
+            "label" : "The Biocrats"
+        },
+        {
+            "@id": "http://wellcomelibrary.org/iiif/b19684915/manifest",
+            "@type": "sc:Manifest",
+            "label" : "Wellcome Apocalypse"
+        },
+        {
+            "@id": "http://wellcomelibrary.org/iiif/b22674883/manifest",
+            "@type": "sc:Manifest",
+            "label" : "Harris's ladies"
+        },
+        {
+            "@id": "http://wellcomelibrary.org/iiif/b1948799x/manifest",
+            "@type": "sc:Manifest",
+            "label" : "Crick's letter"
+        }
+    ]
+}
