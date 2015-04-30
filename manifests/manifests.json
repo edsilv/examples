@@ -1,3 +1,28 @@
+{
+    "@context": "http://iiif.io/api/presentation/2/context.json",
+    "@id": "http://example.org/iiif/collection/top",
+    "@type": "sc:Collection",
+    "label": "Top Level Collection for Example Organization",
+    "collections": [
+        {
+            "@id": "http://universalviewer.org/iiif/collection/wellcome_library",
+            "@type": "sc:Collection",
+            "label": "Wellcome Library"
+        },
+        {
+            "@id": "http://universalviewer.org/iiif/collection/stanford_university",
+            "@type": "sc:Collection",
+            "label": "Stanford University"
+        }
+    ]
+}
+
+
+
+
+
+
+
 [
     {
         "title": "Wellcome Library",
