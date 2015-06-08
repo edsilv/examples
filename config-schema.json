@@ -367,6 +367,10 @@
                                     "id": "localeToggleEnabled",
                                     "type": "boolean"
                                 },
+                                "pageModeEnabled": {
+                                    "id": "pageModeEnabled",
+                                    "type": "boolean"
+                                },
                                 "pagingToggleEnabled": {
                                     "id": "pagingToggleEnabled",
                                     "type": "boolean"
@@ -531,6 +535,10 @@
                                 "elideResultsTermsCount": {
                                     "id": "elideResultsTermsCount",
                                     "type": "integer"
+                                },
+                                "pageModeEnabled": {
+                                    "id": "pageModeEnabled",
+                                    "type": "boolean"
                                 }
                             }
                         },
@@ -540,6 +548,10 @@
                             "properties": {
                                 "clearSearch": {
                                     "id": "clearSearch",
+                                    "type": "string"
+                                },
+                                "defaultLabel": {
+                                    "id": "defaultLabel",
                                     "type": "string"
                                 },
                                 "displaying": {
@@ -659,6 +671,10 @@
                                 "oneColThumbWidth": {
                                     "id": "oneColThumbWidth",
                                     "type": "integer"
+                                },
+                                "pageModeEnabled": {
+                                    "id": "pageModeEnabled",
+                                    "type": "boolean"
                                 },
                                 "panelAnimationDuration": {
                                     "id": "panelAnimationDuration",
